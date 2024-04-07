@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdventureVerse - Adventure</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>AdventureVerse</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <!-- Add more navigation links as needed -->
+            </ul>
+        </nav>
+    </header>
+
+    <div class="content">
+        <h2>The Adventure Continues</h2>
+        <div id="adventureDetails">
+            <!-- JavaScript will fill in the adventure details -->
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 AdventureVerse. All rights reserved.</p>
+    </footer>
+
+    <script src="character.js"></script>
+    <script src="days.js"></script>
+    <script src="paths.js"></script>
+    <script>
+        // Function to parse URL parameters
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        // Get parameters from the URL
+        var character = getParameterByName('character');
+        var days = getParameterByName('days');
+        var path1 = getParameterByName('path1');
+        var path2 = getParameterByName('path2');
+        var path3 = getParameterByName('path3');
+
+        // Display the adventure details
+        var adventureDetailsElement = document.getElementById("adventureDetails");
+        adventureDetailsElement.innerHTML = "<p><strong>" + character + "</strong> was invited to Mother Goose's house. They need to get there in <strong>" + days + "</strong> days. They can't be late.</p>";
+        adventureDetailsElement.innerHTML += "<p>There are 3 options to travel:</p>";
+        adventureDetailsElement.innerHTML += "<button>" + path1 + "</button>";
+        adventureDetailsElement.innerHTML += "<button>" + path2 + "</button>";
+        adventureDetailsElement.innerHTML += "<button>" + path3 + "</button>";
+    </script>
+
+
+
+<footer>
+    <p>&copy; 2024 AdventureVerse. All rights reserved.</p>
+</footer>
+</body>
+</html>

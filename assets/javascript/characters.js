@@ -20,18 +20,11 @@ var characters = [
 
 // Function to randomly select a character
 function getRandomCharacter() {
-    return characters[Math.floor(Math.random() * characters.length)];
+    var randomIndex = Math.floor(Math.random() * characters.length);
+    return characters[randomIndex];
 }
 
-// Get ten random characters
-var randomCharacters = [];
-for (var i = 0; i < 10; i++) {
-    randomCharacters.push(getRandomCharacter());
+// Export the characters list
+function getCharactersList() {
+    return characters;
 }
-
-// Display the random characters
-randomCharacters.forEach(function(character) {
-    console.log("Character: " + character.name);
-    console.log("Characteristics: " + character.characteristics);
-    console.log("---");
-});
