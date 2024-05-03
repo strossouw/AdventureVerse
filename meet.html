@@ -4,8 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Story</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Define gradient-custom class for background */
+        .gradient-custom {
+            /* fallback for old browsers */
+            background: #5ee7df;
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: -webkit-linear-gradient(to right, rgba(94,231,223,0.5), rgba(180,144,202,0.5));
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            background: linear-gradient(to right, rgba(94,231,223,0.5), rgba(180,144,202,0.5));
+            /* Ensure background covers entire viewport */
+            height: 100%;
+        }
+    </style>
 </head>
-<body>
+<body class="gradient-custom">
     
 <header>
     <h1>AdventureVerse</h1>

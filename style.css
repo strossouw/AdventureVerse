@@ -1,5 +1,4 @@
 /* Global Styles */
-
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -35,7 +34,6 @@ footer {
 }
 
 /* Specific Styles */
-
 .content {
     padding: 20px;
 }
@@ -47,4 +45,12 @@ footer {
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
+}
+
+/* Media Queries */
+@media screen and (max-width: 600px) {
+    .btn {
+        padding: 15px 30px;
+        font-size: 18px;
+    }
 }

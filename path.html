@@ -4,8 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Path Selection</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+    <style>
+        /* Define gradient-custom class for background */
+        .gradient-custom {
+            /* fallback for old browsers */
+            background: #5ee7df;
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: -webkit-linear-gradient(to right, rgba(94,231,223,0.5), rgba(180,144,202,0.5));
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            background: linear-gradient(to right, rgba(94,231,223,0.5), rgba(180,144,202,0.5));
+            /* Ensure background covers entire viewport */
+            height: 100%;
+        }
+    </style>
 </head>
-<body>
+<body class="gradient-custom">
     
     <header>
         <h1>AdventureVerse</h1>
@@ -23,21 +39,21 @@
         <h2>Option One Path:</h2>
         <p id="optionOneName"></p>
         <p id="optionOneDescription"></p>
-        <button id="selectPath1">Select</button>
+        <button id="selectPath1">Select <i class="fas" id="optionOneIcon"></i></button>
     </div>
 
     <div id="path2">
         <h2>Option Two Path:</h2>
         <p id="optionTwoName"></p>
         <p id="optionTwoDescription"></p>
-        <button id="selectPath2">Select</button>
+        <button id="selectPath2">Select <i class="fas" id="optionTwoIcon"></i></button>
     </div>
 
     <div id="path3">
         <h2>Option Three Path:</h2>
         <p id="optionThreeName"></p>
         <p id="optionThreeDescription"></p>
-        <button id="selectPath3">Select</button>
+        <button id="selectPath3">Select <i class="fas" id="optionThreeIcon"></i></button>
     </div>
 
     <!-- Include the path.js file -->
@@ -53,6 +69,11 @@
         document.getElementById("optionTwoDescription").textContent = paths[1].description;
         document.getElementById("optionThreeName").textContent = paths[2].name;
         document.getElementById("optionThreeDescription").textContent = paths[2].description;
+
+        // Set icons dynamically
+        document.getElementById("optionOneIcon").classList.add(paths[0].icon);
+        document.getElementById("optionTwoIcon").classList.add(paths[1].icon);
+        document.getElementById("optionThreeIcon").classList.add(paths[2].icon);
 
         // Function to select a path
         function selectPath(pathName, pathDescription, pathLength) {

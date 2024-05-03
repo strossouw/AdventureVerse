@@ -5,8 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AdventureVerse - Home</title>
     <link rel="stylesheet" href="styles.css">
+<!-- Include Font Awesome CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+
+
+    <style>
+        /* Define gradient-custom class for background */
+        .gradient-custom {
+            /* fallback for old browsers */
+            background: #5ee7df;
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: -webkit-linear-gradient(to right, rgba(94,231,223,0.5), rgba(180,144,202,0.5));
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            background: linear-gradient(to right, rgba(94,231,223,0.5), rgba(180,144,202,0.5));
+            /* Ensure background covers entire viewport */
+            height: 100%;
+        }
+    </style>
+    
 </head>
-<body>
+<body class="gradient-custom"> 
+
+    <button id="selectPath1"><i class="fas fa-train"></i> Select</button>
     <header>
         <h1>AdventureVerse</h1>
         <nav>
@@ -27,5 +48,6 @@
     <footer>
         <p>&copy; 2024 AdventureVerse. All rights reserved.</p>
     </footer>
+
 </body>
 </html>
