@@ -4,11 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Party Arrival</title>
-    <!-- Include the ontimecalc.js script -->
-    <script src="assets/javascript/ontimecalc.js"></script>
-
 </head>
 <body>
+    <header>
+        <h1>AdventureVerse</h1>
+        <nav>
+            <ul>
+                <li><a href="#" id="startOverLink">Start over</a></li>
+                <!-- Add more navigation links as needed -->
+            </ul>
+        </nav>
+    </header>
+
     <h1>Party Arrival Status</h1>
     <p id="arrivalStatus"></p>
     
@@ -16,34 +23,68 @@
     <p id="storedCharacter"></p>
 
     <script>
-        // Retrieve character, path, and number of days from local storage
-        var storedCharacter = JSON.parse(localStorage.getItem("character"));
-        var storedPath = localStorage.getItem("path");
-        var storedDays = parseInt(localStorage.getItem("days"));
-        var storedPathLength = localStorage.getItem("pathLength");
-    
-        if (storedPath === null || storedDays === null || storedPathLength === null) {
-            // Handle the case where path, days, or path length are not available
-            document.getElementById("arrivalStatus").textContent = "Error: Path, number of days, or path length not found.";
-        } else {
-            // Example usage of ontimecalc functions
-            if (isEarly(storedDays, storedPathLength)) {
-                document.getElementById("arrivalStatus").textContent = storedCharacter.name + " made it to the party early and has time to relax before it starts!";
-            } else if (isOnTime(storedDays, storedPathLength)) {
-                document.getElementById("arrivalStatus").textContent = storedCharacter.name + " arrived in time for the party!";
-            } else if (isLate(storedDays, storedPathLength)) {
-                document.getElementById("arrivalStatus").textContent = storedCharacter.name + " is late and missed the party!";
+        // Retrieve character and days from local storage
+        var character = JSON.parse(localStorage.getItem("character"));
+        var days = localStorage.getItem("days");
+        var pathLength = "short"; // Assuming the path length is short for demonstration
+
+        // Function to check if the character is on time based on the number of days and the path length
+        function onTimeCalc(numberOfDays, pathLength) {
+            if ((numberOfDays >= 1 && numberOfDays <= 10 && pathLength === "short") ||
+                (numberOfDays >= 11 && numberOfDays <= 20 && pathLength === "medium") ||
+                (numberOfDays >= 21 && numberOfDays <= 30 && pathLength === "long")) {
+                return true; // Character is on time
             } else {
-                document.getElementById("arrivalStatus").textContent = storedCharacter.name + "'s arrival status is unknown.";
+                return false; // Character is not on time
             }
         }
-    
-        // Display the character stored locally
-        if (storedCharacter) {
-            document.getElementById("storedCharacter").textContent = "Character stored locally: " + storedCharacter.name;
-        } else {
-            document.getElementById("storedCharacter").textContent = "No character stored locally.";
+
+        // Function to check if the character is late based on the number of days and the path length
+        function isLate(numberOfDays, pathLength) {
+            if (numberOfDays <= 10 && pathLength === "long") {
+                return true; // Character is late
+            } else {
+                return false; // Character is not late
+            }
         }
+
+        // Function to check if the character is early based on the number of days and the path length
+        function isEarly(numberOfDays, pathLength) {
+            if ((numberOfDays > 10 && numberOfDays <= 20 && pathLength === "short") ||
+                (numberOfDays > 20 && pathLength === "medium") ||
+                (numberOfDays > 30)) {
+                return true; // Character is early
+            } else {
+                return false; // Character is not early
+            }
+        }
+
+        // Display the stored character
+        document.getElementById("storedCharacter").textContent = "Character: " + character.name;
+
+        // Calculate arrival status using functions
+        var onTime = onTimeCalc(days, pathLength);
+        var late = isLate(days, pathLength);
+        var early = isEarly(days, pathLength);
+
+        // Display arrival status based on calculations
+        if (onTime) {
+            document.getElementById("arrivalStatus").textContent = "Arrived on time!";
+        } else if (late) {
+            document.getElementById("arrivalStatus").textContent = "Arrived late!";
+        } else if (early) {
+            document.getElementById("arrivalStatus").textContent = "Arrived early!";
+        } else {
+            document.getElementById("arrivalStatus").textContent = "Status unknown.";
+        }
+
+        // Event listener for the "Start over" link
+        document.getElementById("startOverLink").addEventListener("click", function(event) {
+            event.preventDefault(); // Prevent the default behavior of the link
+            localStorage.clear(); // Clear local storage
+            // Redirect to the index.html page or any other appropriate page
+            window.location.href = "index.html";
+        });
     </script>
 </body>
 </html>

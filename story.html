@@ -11,7 +11,7 @@
     <h1>AdventureVerse</h1>
     <nav>
         <ul>
-            <li><a href="index.html">Start over</a></li>
+            <li><a href="#" id="startOverLink">Start over</a></li>
             <!-- Add more navigation links as needed -->
         </ul>
     </nav>
@@ -63,6 +63,14 @@
     // Store character and days in local storage
     localStorage.setItem("character", JSON.stringify(character));
     localStorage.setItem("days", days);
+
+    // Event listener for the "Start over" link
+    document.getElementById("startOverLink").addEventListener("click", function(event) {
+        event.preventDefault(); // Prevent the default behavior of the link
+        localStorage.clear(); // Clear local storage
+        // Redirect to the index.html page or any other appropriate page
+        window.location.href = "index.html";
+    });
 </script>
 
 </body>

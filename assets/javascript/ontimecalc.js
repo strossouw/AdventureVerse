@@ -1,5 +1,5 @@
 // Function to check if the character is on time based on the number of days and the path length
-function isOnTime(numberOfDays, pathLength) {
+export function onTimeCalc(numberOfDays, pathLength) {
     if ((numberOfDays >= 1 && numberOfDays <= 10 && pathLength === "short") ||
         (numberOfDays >= 11 && numberOfDays <= 20 && pathLength === "medium") ||
         (numberOfDays >= 21 && numberOfDays <= 30 && pathLength === "long")) {
@@ -10,7 +10,7 @@ function isOnTime(numberOfDays, pathLength) {
 }
 
 // Function to check if the character is late based on the number of days and the path length
-function isLate(numberOfDays, pathLength) {
+export function isLate(numberOfDays, pathLength) {
     if (numberOfDays <= 10 && pathLength === "long") {
         return true; // Character is late
     } else {
@@ -19,7 +19,7 @@ function isLate(numberOfDays, pathLength) {
 }
 
 // Function to check if the character is early based on the number of days and the path length
-function isEarly(numberOfDays, pathLength) {
+export function isEarly(numberOfDays, pathLength) {
     if ((numberOfDays > 10 && numberOfDays <= 20 && pathLength === "short") ||
         (numberOfDays > 20 && pathLength === "medium") ||
         (numberOfDays > 30)) {
