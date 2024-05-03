@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story</title>
+</head>
+<body>
+    
+<header>
+    <h1>AdventureVerse</h1>
+    <nav>
+        <ul>
+            <li><a href="#" id="startOverLink">Start over</a></li>
+            <!-- Add more navigation links as needed -->
+        </ul>
+    </nav>
+</header>
+
+
+<h1>Story</h1>
+
+<div id="character">
+    <h2>Character:</h2>
+    <p id="characterName"></p>
+    <p id="characterCharacteristics"></p>
+</div>
+
+<div id="days">
+    <h2>Number of Days:</h2>
+    <p id="numberOfDays"></p>
+</div>
+
+<p>
+Along the way, <span id="firstCharacter"></span> meets <span id="anotherCharacter"></span>. They have a lovely chat getting to know each other.
+<span id="anotherCharacterName"></span> invites you to come to their house for tea.
+</p>
+
+<button id="yesButton">Yes</button>
+<button id="noButton">No</button>
+
+<footer>
+    <p>&copy; 2024 AdventureVerse. All rights reserved.</p>
+</footer>
+
+<script src="assets/javascript/characters.js"></script>
+<script src="assets/javascript/days.js"></script>
+<script>
+    // Fetch the returned item from character.js
+    var character = JSON.parse(localStorage.getItem("character"));
+    document.getElementById("characterName").textContent = character.name;
+    document.getElementById("characterCharacteristics").textContent = character.characteristics;
+    document.getElementById("firstCharacter").textContent = character.name;
+
+    // Fetch the returned item from characters.js for another character
+    var anotherCharacter = getRandomCharacter();
+    document.getElementById("anotherCharacterName").textContent = anotherCharacter.name;
+    document.getElementById("anotherCharacter").textContent = anotherCharacter.name;
+
+    // Event listener for the "Yes" button
+    document.getElementById("yesButton").addEventListener("click", function() {
+        // Increment days in local storage
+        var days = parseInt(localStorage.getItem("days"));
+        days++;
+        localStorage.setItem("days", days);
+        // Redirect to end.html
+        window.location.href = "end.html";
+    });
+
+    // Event listener for the "No" button
+    document.getElementById("noButton").addEventListener("click", function() {
+        // Redirect to end.html without changing the number of days
+        window.location.href = "end.html";
+    });
+
+    // Event listener for the "Start over" link
+    document.getElementById("startOverLink").addEventListener("click", function(event) {
+        event.preventDefault(); // Prevent the default behavior of the link
+        localStorage.clear(); // Clear local storage
+        // Redirect to the index.html page or any other appropriate page
+        window.location.href = "index.html";
+    });
+</script>
+
+</body>
+</html>
