@@ -3,10 +3,12 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    font-size: 20px; /* Increased overall font size for better accessibility */
+    color: #000; /* Set font color to black */
 }
 
 header {
-    background-color: #333;
+    background-color: rgba(60, 0, 120, 0.5); /* Darker shade of purple */
     color: #fff;
     padding: 20px;
 }
@@ -22,13 +24,13 @@ nav ul li {
 }
 
 nav ul li a {
-    color: #fff;
+    color: #000; /* Set link color to black */
     text-decoration: none;
 }
 
 footer {
-    background-color: #333;
-    color: #fff;
+    background-color: rgba(110, 0, 220, 0.5); /* Darker shade of purple */
+    color: #000; /* Set font color to black */
     padding: 20px;
     text-align: center;
 }
@@ -42,7 +44,7 @@ footer {
     display: inline-block;
     padding: 45px 90px; /* Adjusted padding to make the button about half the size */
     background-color: #6c757d; /* Changed background color to gray */
-    color: #fff;
+    color: #000; /* Set font color to black */
     text-decoration: none;
     border-radius: 5px;
     font-size: 36px; /* Increased font size for larger text */
