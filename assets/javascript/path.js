@@ -5,11 +5,10 @@ function Path(name, description, length) {
     this.length = length;
 }
 
-// Example paths
 var paths = [
-    new Path("Train", "Take the train to reach Mother Goose.", "long"),
-    new Path("Walk", "Meander through the woods to reach Mother Goose.", "medium"),
-    new Path("Fly", "Fly at night to reach Mother Goose.", "short"),
+    new Path("Train", "Take the train to reach Mother Goose.", "12"),
+    new Path("Walk", "Meander through the woods to reach Mother Goose.", "27"),
+    new Path("Fly", "Fly at night to reach Mother Goose.", "2"),
 ];
 
 // Export the path list
