@@ -18,49 +18,52 @@
 </header>
 
 
-    <h1>Story</h1>
-    
-    <div id="character">
-        <h2>Character:</h2>
-        <p id="characterName"></p>
-        <p id="characterCharacteristics"></p>
-    </div>
+<h1>Story</h1>
 
-    <div id="days">
-        <h2>Number of Days:</h2>
-        <p id="numberOfDays"></p>
-    </div>
+<div id="character">
+    <h2>Character:</h2>
+    <p id="characterName"></p>
+    <p id="characterCharacteristics"></p>
+</div>
 
-    <p>
-        Once upon a time, our character was invited to a splendid party at Mother Goose's house, celebrating a joyous occasion. 
-        With the invitation in hand, they embarked on a journey filled with anticipation and excitement. 
-        Along the way, they will travel through mysterious forests, where ancient trees whisper secrets of bygone days. 
-        They will traverse rolling hills, where playful creatures dance in the golden sunlight. 
-        They will meet colorful characters with tales to tell and wisdom to share. 
-        From tranquil rivers to rugged mountains, our character's path is lined with choices about their journey. 
-        They grow excited to face whatever lays ahead on their enchanting quest to the party of a lifetime. 
-        Are you ready to help the adventure unfold? 
-    </p>
+<div id="days">
+    <h2>Number of Days:</h2>
+    <p id="numberOfDays"></p>
+</div>
 
-    <a href="path.html"><button id="startButton">Start</button></a>
+<p>
+    Once upon a time, our character was invited to a splendid party at Mother Goose's house, celebrating a joyous occasion. 
+    With the invitation in hand, they embarked on a journey filled with anticipation and excitement. 
+    Along the way, they will travel through mysterious forests, where ancient trees whisper secrets of bygone days. 
+    They will traverse rolling hills, where playful creatures dance in the golden sunlight. 
+    They will meet colorful characters with tales to tell and wisdom to share. 
+    From tranquil rivers to rugged mountains, our character's path is lined with choices about their journey. 
+    They grow excited to face whatever lays ahead on their enchanting quest to the party of a lifetime. 
+    Are you ready to help the adventure unfold? 
+</p>
 
-
-    <script src="assets/javascript/characters.js"></script>
-    <script src="assets/javascript/days.js"></script>
-    <script>
-        // Fetch the returned item from character.js
-        var character = getRandomCharacter();
-        document.getElementById("characterName").textContent = character.name;
-        document.getElementById("characterCharacteristics").textContent = character.characteristics;
-
-        // Fetch the returned item from days.js
-        var days = getRandomDays();
-        document.getElementById("numberOfDays").textContent = days;
-    </script>
-
+<a href="path.html"><button id="startButton">Start</button></a>
 
 <footer>
     <p>&copy; 2024 AdventureVerse. All rights reserved.</p>
 </footer>
+
+<script src="assets/javascript/characters.js"></script>
+<script src="assets/javascript/days.js"></script>
+<script>
+    // Fetch the returned item from character.js
+    var character = getRandomCharacter();
+    document.getElementById("characterName").textContent = character.name;
+    document.getElementById("characterCharacteristics").textContent = character.characteristics;
+
+    // Fetch the returned item from days.js
+    var days = getRandomDays();
+    document.getElementById("numberOfDays").textContent = days;
+
+    // Store character and days in local storage
+    localStorage.setItem("character", JSON.stringify(character));
+    localStorage.setItem("days", days);
+</script>
+
 </body>
 </html>

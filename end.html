@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Party Arrival</title>
+    <!-- Include the ontimecalc.js script -->
+    <script src="assets/javascript/ontimecalc.js"></script>
+
+</head>
+<body>
+    <h1>Party Arrival Status</h1>
+    <p id="arrivalStatus"></p>
+    
+    <!-- New element to display the character stored locally -->
+    <p id="storedCharacter"></p>
+
+    <script>
+        // Retrieve character, path, and number of days from local storage
+        var storedCharacter = JSON.parse(localStorage.getItem("character"));
+        var storedPath = localStorage.getItem("path");
+        var storedDays = parseInt(localStorage.getItem("days"));
+        var storedPathLength = localStorage.getItem("pathLength");
+    
+        if (storedPath === null || storedDays === null || storedPathLength === null) {
+            // Handle the case where path, days, or path length are not available
+            document.getElementById("arrivalStatus").textContent = "Error: Path, number of days, or path length not found.";
+        } else {
+            // Example usage of ontimecalc functions
+            if (isEarly(storedDays, storedPathLength)) {
+                document.getElementById("arrivalStatus").textContent = storedCharacter.name + " made it to the party early and has time to relax before it starts!";
+            } else if (isOnTime(storedDays, storedPathLength)) {
+                document.getElementById("arrivalStatus").textContent = storedCharacter.name + " arrived in time for the party!";
+            } else if (isLate(storedDays, storedPathLength)) {
+                document.getElementById("arrivalStatus").textContent = storedCharacter.name + " is late and missed the party!";
+            } else {
+                document.getElementById("arrivalStatus").textContent = storedCharacter.name + "'s arrival status is unknown.";
+            }
+        }
+    
+        // Display the character stored locally
+        if (storedCharacter) {
+            document.getElementById("storedCharacter").textContent = "Character stored locally: " + storedCharacter.name;
+        } else {
+            document.getElementById("storedCharacter").textContent = "No character stored locally.";
+        }
+    </script>
+</body>
+</html>

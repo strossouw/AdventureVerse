@@ -23,47 +23,64 @@
         <h2>Option One Path:</h2>
         <p id="optionOneName"></p>
         <p id="optionOneDescription"></p>
-        <button onclick="selectPath('optionOne')">Select</button>
+        <button id="selectPath1">Select</button>
     </div>
 
     <div id="path2">
         <h2>Option Two Path:</h2>
         <p id="optionTwoName"></p>
         <p id="optionTwoDescription"></p>
-        <button onclick="selectPath('optionTwo')">Select</button>
+        <button id="selectPath2">Select</button>
     </div>
 
     <div id="path3">
         <h2>Option Three Path:</h2>
         <p id="optionThreeName"></p>
         <p id="optionThreeDescription"></p>
-        <button onclick="selectPath('optionThree')">Select</button>
+        <button id="selectPath3">Select</button>
     </div>
 
     <!-- JavaScript file -->
     <script src="assets/javascript/path.js"></script>
     <script>
-        // Fetch the returned items from path.js
-        var randomPaths = getRandomPaths();
+        // Fetch the returned item from character.js
+        var character = JSON.parse(localStorage.getItem("character"));
+        var days = localStorage.getItem("days");
 
-        // Display path 1
-        document.getElementById("optionOneName").textContent = randomPaths[0].name;
-        document.getElementById("optionOneDescription").textContent = randomPaths[0].description;
+        // Populate path details dynamically
+        document.getElementById("optionOneName").textContent = paths[0].name;
+        document.getElementById("optionOneDescription").textContent = paths[0].description;
+        document.getElementById("optionTwoName").textContent = paths[1].name;
+        document.getElementById("optionTwoDescription").textContent = paths[1].description;
+        document.getElementById("optionThreeName").textContent = paths[2].name;
+        document.getElementById("optionThreeDescription").textContent = paths[2].description;
 
-        // Display path 2
-        document.getElementById("optionTwoName").textContent = randomPaths[1].name;
-        document.getElementById("optionTwoDescription").textContent = randomPaths[1].description;
+        // Assign event listeners to the buttons
+        document.getElementById("selectPath1").addEventListener("click", function() {
+            selectPath(paths[0].name, paths[0].length);
+        });
 
-        // Display path 3
-        document.getElementById("optionThreeName").textContent = randomPaths[2].name;
-        document.getElementById("optionThreeDescription").textContent = randomPaths[2].description;
+        document.getElementById("selectPath2").addEventListener("click", function() {
+            selectPath(paths[1].name, paths[1].length);
+        });
 
-        // Function to handle path selection
-        function selectPath(option) {
-            var selectedPathName = document.getElementById("option" + option + "Name").textContent;
-            var selectedPathDescription = document.getElementById("option" + option + "Description").textContent;
-            alert("You have selected: " + selectedPathName + "\nDescription: " + selectedPathDescription);
-            // You can perform further actions here, like redirecting to another page or updating UI based on the selected path.
+        document.getElementById("selectPath3").addEventListener("click", function() {
+            selectPath(paths[2].name, paths[2].length);
+        });
+
+        // Function to select a path
+        function selectPath(pathName, pathLength) {
+            // Create an object for selected path
+            var selectedPath = {
+                name: pathName,
+                length: pathLength
+            };
+
+            // Store selected path in local storage
+            localStorage.setItem("selectedPath", JSON.stringify(selectedPath));
+
+            // Redirect to end.html
+            window.location.href = "end.html";
         }
     </script>
 
