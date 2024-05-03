@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Story</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     <style>
         /* Define gradient-custom class for background */
         .gradient-custom {
@@ -18,13 +18,7 @@
             height: 100%;
         }
 
-        /* Media Queries */
-        @media screen and (max-width: 600px) {
-            #startButton {
-                padding: 15px 30px;
-                font-size: 18px;
-            }
-        }
+
     </style>
 </head>
 <body class="gradient-custom">
@@ -64,7 +58,7 @@
     Are you ready to help the adventure unfold? 
 </p>
 
-<a href="path.html"><button id="startButton">Start</button></a>
+<a href="path.html"><button id="startButton" class="btn">Start</button></a>
 
 <footer>
     <p>&copy; 2024 AdventureVerse. All rights reserved.</p>
@@ -72,6 +66,7 @@
 
 <script src="assets/javascript/characters.js"></script>
 <script src="assets/javascript/days.js"></script>
+
 <script>
     // Fetch the returned item from character.js
     var character = getRandomCharacter();
